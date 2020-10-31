@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-generateBtn.addEventListener ("click", function(requestedLength){
+generateBtn.addEventListener ("click", function() {
   var requestedLength = prompt("Specify the character length of the password (must be between 8 and 128 characters)");
   while (requestedLength < 8 || requestedLength > 128) {
     if (requestedLength < 8) {
@@ -26,28 +26,52 @@ console.log(requestedNumbers);
 console.log(requestedSpecialCharacters);
 
 
-var passwordNumeric = "";
+var password = "";
 
 for (i = 0; i < requestedLength; i++) {
-  var passwordNumeric = passwordNumeric + Math.floor(Math.random() * 9 + 1).toString();
+  var password = password + Math.floor(Math.random() * 9 + 1).toString();
   
 }
+console.log(password);
 
-console.log(passwordNumeric);
+//The below adds random lowercase characters to the password.
+
 var alphabeticCharacters = "abcdefghijklmnopqrstuvwxyz";
+console.log(alphabeticCharacters);
 
+
+  function addLowercaseCharacters() {
+     
+      return password = password.replace(password.charAt(Math.floor(Math.random() * password.length + 1)), alphabeticCharacters.charAt(Math.floor(Math.random() * 26)));
+
+}
 
 if (requestedLowercase) {
-  var 
+  for (i = 0; i < (requestedLength / 4); i++) {
+    addLowercaseCharacters();
+  }
 }
 
+console.log(password);
 
-for (i = 0; i < (requestedLength / 4); i++) {
-  var letterPick = alphabeticCharacters.charAt(Math.floor(Math.random() * 26));
-  console.log(letterPick);
 
+
+
+//This will then add any uppercase letters
+function addUppercaseCharacters() {
+     
+  return password = password.replace(password.charAt(Math.floor(Math.random() * password.length + 1)),  alphabeticCharacters.charAt(Math.floor(Math.random() * 26)).toUpperCase());
 
 }
+
+if (requestedUppercase) {
+  for (i = 0; i < (requestedLength / 5); i++) {
+    addUppercaseCharacters();
+  }
+}
+
+console.log(password);
+
 
 
 
@@ -58,6 +82,10 @@ for (i = 0; i < (requestedLength / 4); i++) {
 
 
 
+
+
+
+/*
 // While loop to validate that the user enters the expected number
 
   
@@ -65,7 +93,6 @@ for (i = 0; i < (requestedLength / 4); i++) {
 
 
 
-  var password
 
 
 
@@ -90,7 +117,7 @@ for (i = 0; i < (requestedLength / 4); i++) {
 // 8. Using the stored responses, generate the password
 // 9. Write the password in the box
 // 10. When user clicks generate password, the process restarts=
-
+*/
 
 // Write password to the #password input
 function writePassword() {
