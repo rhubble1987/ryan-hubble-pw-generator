@@ -319,7 +319,7 @@ conditionals.
 // 7. If no, skip the prompt and move on to the generatedPassword generation
 // 8. Using the stored responses, generate the generatedPassword
 // 9. Write the generatedPassword in the box
-// 10. When user clicks generate generatedPassword, the process restarts=
+// 10. When user clicks generate generatedPassword, the process restarts
 
 // Write generatedPassword to the #generatedPassword input
 function writePassword() {
