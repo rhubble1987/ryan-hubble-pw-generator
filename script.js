@@ -1,129 +1,148 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
-
-generateBtn.addEventListener("click", function generatePassword(){
-  var requestedLength = prompt("Specify the character length of the password (must be between 8 and 128 characters)");
+function generatePassword() {
+  var requestedLength = prompt(
+    "Specify the character length of the password (must be between 8 and 128 characters)"
+  );
   while (requestedLength < 8 || requestedLength > 128) {
     if (requestedLength < 8) {
       alert("Cannot be less than 8 characters in length.");
-      var requestedLength = prompt("Specify the character length of the password (must be between 8 and 128 characters)");
+      var requestedLength = prompt(
+        "Specify the character length of the password (must be between 8 and 128 characters)"
+      );
     } else if (requestedLength > 128) {
       alert("Cannot exceed 128 characters in length.");
-      var requestedLength = prompt("Specify the character length of the password (must be between 8 and 128 characters)");
-    } else if (requestedLength !== Number); {
+      var requestedLength = prompt(
+        "Specify the character length of the password (must be between 8 and 128 characters)"
+      );
+    } else if (requestedLength !== Number);
+    {
       alert("You must enter a number.");
-      var requestedLength = prompt("Specify the character length of the password (must be between 8 and 128 characters)");
+      var requestedLength = prompt(
+        "Specify the character length of the password (must be between 8 and 128 characters)"
+      );
     }
+  }
 
-}
+  var requestedUppercase = confirm(
+    "Should the password contain upper case letters? Click 'Ok' if yes, or 'Cancel' if no."
+  );
+  var requestedLowercase = confirm(
+    "Should the password contain lower case characters? Click 'Ok' if yes, or 'Cancel' if no."
+  );
+  var requestedNumbers = confirm(
+    "Should the password contain numbers? Click 'Ok' if yes, or 'Cancel' if no."
+  );
+  var requestedSpecialCharacters = confirm(
+    "Should the password contain special characters? Click 'Ok' if yes, or 'Cancel' if no."
+  );
 
+  //This code will validate that the user selected at least one of the character criteria.
 
-var requestedUppercase = confirm("Should the password contain upper case letters? Click 'Ok' if yes, or 'Cancel' if no.");
-var requestedLowercase = confirm("Should the password contain lower case characters? Click 'Ok' if yes, or 'Cancel' if no.");
-var requestedNumbers = confirm("Should the password contain numbers? Click 'Ok' if yes, or 'Cancel' if no.");
-var requestedSpecialCharacters = confirm("Should the password contain special characters? Click 'Ok' if yes, or 'Cancel' if no.");
+  while (
+    requestedUppercase !== true &&
+    requestedLowercase !== true &&
+    requestedNumbers !== true &&
+    requestedSpecialCharacters !== true
+  ) {
+    alert("You must select at least one type of character.");
+    var requestedUppercase = confirm(
+      "Should the password contain upper case letters? Click 'Ok' if yes, or 'Cancel' if no."
+    );
+    var requestedLowercase = confirm(
+      "Should the password contain lower case characters? Click 'Ok' if yes, or 'Cancel' if no."
+    );
+    var requestedNumbers = confirm(
+      "Should the password contain numbers? Click 'Ok' if yes, or 'Cancel' if no."
+    );
+    var requestedSpecialCharacters = confirm(
+      "Should the password contain special characters? Click 'Ok' if yes, or 'Cancel' if no."
+    );
+  }
 
-//This code will validate that the user selected at least one of the character criteria.
+  console.log(requestedLength);
+  console.log(requestedUppercase);
+  console.log(requestedLowercase);
+  console.log(requestedNumbers);
+  console.log(requestedSpecialCharacters);
 
-while (requestedUppercase !== true && requestedLowercase !== true && requestedNumbers !== true && requestedSpecialCharacters !== true) {
-  alert("You must select at least one type of character.")
-  var requestedUppercase = confirm("Should the password contain upper case letters? Click 'Ok' if yes, or 'Cancel' if no.");
-  var requestedLowercase = confirm("Should the password contain lower case characters? Click 'Ok' if yes, or 'Cancel' if no.");
-  var requestedNumbers = confirm("Should the password contain numbers? Click 'Ok' if yes, or 'Cancel' if no.");
-  var requestedSpecialCharacters = confirm("Should the password contain special characters? Click 'Ok' if yes, or 'Cancel' if no.");
-}
+  var selectedCriteria = 0;
 
-console.log(requestedLength);
-console.log(requestedUppercase);
-console.log(requestedLowercase);
-console.log(requestedNumbers);
-console.log(requestedSpecialCharacters);
+  if (requestedLength) {
+    selectedCriteria = selectedCriteria++;
+  }
 
-var selectedCriteria = 0;
+  if (requestedUppercase) {
+    selectedCriteria = selectedCriteria++;
+  }
 
-if (requestedLength) {
-  selectedCriteria = selectedCriteria++;
-}
+  if (requestedLowercase) {
+    selectedCriteria = selectedCriteria++;
+  }
 
-if (requestedUppercase) {
-  selectedCriteria = selectedCriteria++;
-}
+  var generatedPassword = "";
 
-if (requestedLowercase) {
-  selectedCriteria = selectedCriteria++
-}
+  for (i = 0; i < requestedLength; i++) {
+    var generatedPassword =
+      generatedPassword + Math.floor(Math.random() * 9 + 1).toString();
+  }
 
+  //The below adds random lowercase characters to the generatedPassword.
 
-
-
-var generatedPassword = "";
-
-for (i = 0; i < requestedLength; i++) {
-  var generatedPassword = generatedPassword + Math.floor(Math.random() * 9 + 1).toString();
-  
-}
-
-
-//The below adds random lowercase characters to the generatedPassword.
-
-var alphabeticCharacters = "abcdefghijklmnopqrstuvwxyz";
-console.log(alphabeticCharacters);
-
+  var alphabeticCharacters = "abcdefghijklmnopqrstuvwxyz";
+  console.log(alphabeticCharacters);
 
   function addLowercaseCharacters() {
-     
-      return generatedPassword = generatedPassword.replace(generatedPassword.charAt(Math.floor(Math.random() * generatedPassword.length)), alphabeticCharacters.charAt(Math.floor(Math.random() * 26)));
-
-}
-
-if (requestedLowercase) {
-  for (i = 0; i < (requestedLength / 4); i++) {
-    addLowercaseCharacters();
+    return (generatedPassword = generatedPassword.replace(
+      generatedPassword.charAt(
+        Math.floor(Math.random() * generatedPassword.length)
+      ),
+      alphabeticCharacters.charAt(Math.floor(Math.random() * 26))
+    ));
   }
-}
 
-
-
-
-
-
-//This will then add any uppercase letters
-function addUppercaseCharacters() {
-     
-  return generatedPassword = generatedPassword.replace(generatedPassword.charAt(Math.floor(Math.random() * generatedPassword.length)),  alphabeticCharacters.charAt(Math.floor(Math.random() * 26)).toUpperCase());
-
-}
-
-if (requestedUppercase) {
-  for (i = 0; i < (requestedLength / 5); i++) {
-    addUppercaseCharacters();
+  if (requestedLowercase) {
+    for (i = 0; i < requestedLength / 4; i++) {
+      addLowercaseCharacters();
+    }
   }
-}
 
+  //This will then add any uppercase letters
+  function addUppercaseCharacters() {
+    return (generatedPassword = generatedPassword.replace(
+      generatedPassword.charAt(
+        Math.floor(Math.random() * generatedPassword.length)
+      ),
+      alphabeticCharacters.charAt(Math.floor(Math.random() * 26)).toUpperCase()
+    ));
+  }
 
+  if (requestedUppercase) {
+    for (i = 0; i < requestedLength / 5; i++) {
+      addUppercaseCharacters();
+    }
+  }
 
-if (requestedLowercase === false) {
-  generatedPassword.toUpperCase();
-}
+  if (requestedLowercase === false) {
+    generatedPassword.toUpperCase();
+  }
 
+  //This code will add some special characters
+  var specialCharacters = "!@#$%^&*()_-+=?";
+  function addSpecialCharacters() {
+    return (generatedPassword = generatedPassword.replace(
+      generatedPassword.charAt(
+        Math.floor(Math.random() * generatedPassword.length)
+      ),
+      specialCharacters.charAt(Math.floor(Math.random() * 15))
+    ));
+  }
 
+  if (requestedSpecialCharacters) {
+    for (i = 0; i < requestedLength / 6; i++) {
+      addSpecialCharacters();
+    }
 
-
-//This code will add some special characters
-var specialCharacters = "!@#$%^&*()_-+=?";
-function addSpecialCharacters(){
-  return generatedPassword = generatedPassword.replace(generatedPassword.charAt(Math.floor(Math.random() * generatedPassword.length)), specialCharacters.charAt(Math.floor(Math.random() * 15)));
-}
-
-if (requestedSpecialCharacters) {
-  for (i = 0; i < (requestedLength / 6); i++) {
-    addSpecialCharacters();
-}
-
-
-
-
-/*
+    /*
 
 This next code should remove all numeric characters if the user selected no for including numeric characters.
 After clearing out the generatedPassword, it will then use a for loop to generate a string of alphabetic characters based on the requested
@@ -132,133 +151,159 @@ conditionals.
 
 */
 
-
-function removeNumbers() {
-  return generatedPassword = generatedPassword.replace(generatedPassword,"");
-}
-
-function replaceWithALetter() {
-  return generatedPassword = alphabeticCharacters.charAt(Math.floor(Math.random() * 26))
-}
-
-function addMoreLetters() {
-  return generatedPassword = generatedPassword + alphabeticCharacters.charAt(Math.floor(Math.random() * 26));
-}
-
-function replaceWithASpecialCharacter() {
-  return generatedPassword = specialCharacters.charAt(Math.floor(Math.random() * 15))
-}
-
-function addMoreSpecialCharacters() {
-  return generatedPassword = generatedPassword + specialCharacters.charAt(Math.floor(Math.random() * 15));
-}
-
-
-
-if (requestedNumbers === false && requestedUppercase === true && requestedLowercase === true && requestedSpecialCharacters === true) {
-  removeNumbers();
-  replaceWithALetter();
-  for (i = 0; i < (requestedLength - 1); i++) {
-    addMoreLetters();
-  }
-  for (i = 0; i < (requestedLength / 5); i++) {
-      addUppercaseCharacters();
-    }
-  for (i = 0; i < (requestedLength / 5); i++) {
-      addSpecialCharacters();
+    function removeNumbers() {
+      return (generatedPassword = generatedPassword.replace(
+        generatedPassword,
+        ""
+      ));
     }
 
+    function replaceWithALetter() {
+      return (generatedPassword = alphabeticCharacters.charAt(
+        Math.floor(Math.random() * 26)
+      ));
+    }
+
+    function addMoreLetters() {
+      return (generatedPassword =
+        generatedPassword +
+        alphabeticCharacters.charAt(Math.floor(Math.random() * 26)));
+    }
+
+    function replaceWithASpecialCharacter() {
+      return (generatedPassword = specialCharacters.charAt(
+        Math.floor(Math.random() * 15)
+      ));
+    }
+
+    function addMoreSpecialCharacters() {
+      return (generatedPassword =
+        generatedPassword +
+        specialCharacters.charAt(Math.floor(Math.random() * 15)));
+    }
+
+    if (
+      requestedNumbers === false &&
+      requestedUppercase === true &&
+      requestedLowercase === true &&
+      requestedSpecialCharacters === true
+    ) {
+      removeNumbers();
+      replaceWithALetter();
+      for (i = 0; i < requestedLength - 1; i++) {
+        addMoreLetters();
+      }
+      for (i = 0; i < requestedLength / 5; i++) {
+        addUppercaseCharacters();
+      }
+      for (i = 0; i < requestedLength / 5; i++) {
+        addSpecialCharacters();
+      }
+    }
+
+    if (
+      requestedNumbers === false &&
+      requestedUppercase === true &&
+      requestedLowercase === false &&
+      requestedSpecialCharacters === false
+    ) {
+      removeNumbers();
+      replaceWithALetter();
+      for (i = 0; i < requestedLength - 1; i++) {
+        addMoreLetters();
+      }
+      generatedPassword.toUpperCase();
+    }
+
+    if (
+      requestedNumbers === false &&
+      requestedUppercase === false &&
+      requestedLowercase === true &&
+      requestedSpecialCharacters === true
+    ) {
+      removeNumbers();
+      replaceWithALetter();
+      for (i = 0; i < requestedLength - 1; i++) {
+        addMoreLetters();
+      }
+      for (i = 0; i < requestedLength / 6; i++) {
+        addSpecialCharacters();
+      }
+    }
+    if (
+      requestedNumbers === false &&
+      requestedUppercase === false &&
+      requestedLowercase === true &&
+      requestedSpecialCharacters === false
+    ) {
+      removeNumbers();
+      replaceWithALetter();
+      for (i = 0; i < requestedLength - 1; i++) {
+        addMoreLetters();
+      }
+    }
+    if (
+      requestedNumbers === false &&
+      requestedUppercase === false &&
+      requestedLowercase === false &&
+      requestedSpecialCharacters === true
+    ) {
+      removeNumbers();
+      replaceWithASpecialCharacter();
+      for (i = 0; i < requestedLength - 1; i++) {
+        addMoreSpecialCharacters();
+      }
+    }
+    if (
+      requestedNumbers === false &&
+      requestedUppercase === true &&
+      requestedLowercase === true &&
+      requestedSpecialCharacters === false
+    ) {
+      removeNumbers();
+      replaceWithALetter();
+      for (i = 0; i < requestedLength - 1; i++) {
+        addMoreLetters();
+      }
+      for (i = 0; i < requestedLength / 5; i++) {
+        addUppercaseCharacters();
+      }
+    }
+
+    if (
+      requestedNumbers === false &&
+      requestedUppercase === true &&
+      requestedLowercase === false &&
+      requestedSpecialCharacters === true
+    ) {
+      removeNumbers();
+      replaceWithALetter();
+      for (i = 0; i < requestedLength - 1; i++) {
+        addMoreLetters();
+      }
+      generatedPassword.toUpperCase();
+      for (i = 0; i < requestedLength / 6; i++) {
+        addSpecialCharacters();
+      }
+    }
+
+    if (
+      requestedNumbers === false &&
+      requestedUppercase === true &&
+      requestedLowercase === false &&
+      requestedSpecialCharacters === false
+    ) {
+      removeNumbers();
+      replaceWithALetter();
+      for (i = 0; i < requestedLength - 1; i++) {
+        addMoreLetters();
+      }
+      generatedPassword.toUpperCase();
+    }
   }
 
-  if (requestedNumbers === false && requestedUppercase === true && requestedLowercase === false && requestedSpecialCharacters === false) {
-    removeNumbers();
-  replaceWithALetter();
-  for (i = 0; i < (requestedLength - 1); i++) {
-    addMoreLetters();
-  }
-    generatedPassword.toUpperCase();
-  }
-
-  if (requestedNumbers === false && requestedUppercase === false && requestedLowercase === true && requestedSpecialCharacters === true) {
-    removeNumbers();
-  replaceWithALetter();
-  for (i = 0; i < (requestedLength - 1); i++) {
-    addMoreLetters();
-  }
-  for (i = 0; i < (requestedLength / 6); i++) {
-    addSpecialCharacters();
+  alert("Your password is " + generatedPassword);
 }
-  }
-  if (requestedNumbers === false && requestedUppercase === false && requestedLowercase === true && requestedSpecialCharacters === false) {
-    removeNumbers();
-  replaceWithALetter();
-  for (i = 0; i < (requestedLength - 1); i++) {
-    addMoreLetters();
-  }
-
-}  
-if (requestedNumbers === false && requestedUppercase === false && requestedLowercase === false && requestedSpecialCharacters === true) {
-  removeNumbers();
-  replaceWithASpecialCharacter();
-for (i = 0; i < (requestedLength - 1); i++) {
-  addMoreSpecialCharacters();
-}
-
-}  
-if (requestedNumbers === false && requestedUppercase === true && requestedLowercase === true && requestedSpecialCharacters === false) {
-  removeNumbers();
-replaceWithALetter();
-for (i = 0; i < (requestedLength - 1); i++) {
-  addMoreLetters();
-}
-for (i = 0; i < (requestedLength / 5); i++) {
-  addUppercaseCharacters();
-}
-}
-
-
-if (requestedNumbers === false && requestedUppercase === true && requestedLowercase === false && requestedSpecialCharacters === true) 
-emoveNumbers();
-replaceWithALetter();
-for (i = 0; i < (requestedLength - 1); i++) {
-  addMoreLetters();
-}
-generatedPassword.toUpperCase();
-for (i = 0; i < (requestedLength / 6); i++) {
-  addSpecialCharacters();
-}
-}
-
-
-console.log(generatedPassword);
-
-
-});
-
-
-
-
-
-
-
-
-
-/*
-// While loop to validate that the user enters the expected number
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Assignment Code
 
@@ -275,21 +320,15 @@ console.log(generatedPassword);
 // 8. Using the stored responses, generate the generatedPassword
 // 9. Write the generatedPassword in the box
 // 10. When user clicks generate generatedPassword, the process restarts=
-*/
 
 // Write generatedPassword to the #generatedPassword input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
+  passwordText = password;
 }
 
 // Add event listener to generate button
+var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
-
-  
-
-
-
