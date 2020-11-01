@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function generatePassword() {
+generateBtn.addEventListener("click", function generatePassword(){
   var requestedLength = prompt("Specify the character length of the password (must be between 8 and 128 characters)");
   while (requestedLength < 8 || requestedLength > 128) {
     if (requestedLength < 8) {
@@ -56,15 +56,15 @@ if (requestedLowercase) {
 
 
 
-var password = "";
+var generatedPassword = "";
 
 for (i = 0; i < requestedLength; i++) {
-  var password = password + Math.floor(Math.random() * 9 + 1).toString();
+  var generatedPassword = generatedPassword + Math.floor(Math.random() * 9 + 1).toString();
   
 }
-console.log(password);
 
-//The below adds random lowercase characters to the password.
+
+//The below adds random lowercase characters to the generatedPassword.
 
 var alphabeticCharacters = "abcdefghijklmnopqrstuvwxyz";
 console.log(alphabeticCharacters);
@@ -72,7 +72,7 @@ console.log(alphabeticCharacters);
 
   function addLowercaseCharacters() {
      
-      return password = password.replace(password.charAt(Math.floor(Math.random() * password.length)), alphabeticCharacters.charAt(Math.floor(Math.random() * 26)));
+      return generatedPassword = generatedPassword.replace(generatedPassword.charAt(Math.floor(Math.random() * generatedPassword.length)), alphabeticCharacters.charAt(Math.floor(Math.random() * 26)));
 
 }
 
@@ -82,7 +82,7 @@ if (requestedLowercase) {
   }
 }
 
-console.log(password);
+
 
 
 
@@ -90,7 +90,7 @@ console.log(password);
 //This will then add any uppercase letters
 function addUppercaseCharacters() {
      
-  return password = password.replace(password.charAt(Math.floor(Math.random() * password.length)),  alphabeticCharacters.charAt(Math.floor(Math.random() * 26)).toUpperCase());
+  return generatedPassword = generatedPassword.replace(generatedPassword.charAt(Math.floor(Math.random() * generatedPassword.length)),  alphabeticCharacters.charAt(Math.floor(Math.random() * 26)).toUpperCase());
 
 }
 
@@ -100,19 +100,19 @@ if (requestedUppercase) {
   }
 }
 
-console.log(password);
+
 
 if (requestedLowercase === false) {
-  password.toUpperCase();
+  generatedPassword.toUpperCase();
 }
 
-console.log(password);
+
 
 
 //This code will add some special characters
 var specialCharacters = "!@#$%^&*()_-+=?";
 function addSpecialCharacters(){
-  return password = password.replace(password.charAt(Math.floor(Math.random() * password.length)), specialCharacters.charAt(Math.floor(Math.random() * 15)));
+  return generatedPassword = generatedPassword.replace(generatedPassword.charAt(Math.floor(Math.random() * generatedPassword.length)), specialCharacters.charAt(Math.floor(Math.random() * 15)));
 }
 
 if (requestedSpecialCharacters) {
@@ -120,13 +120,13 @@ if (requestedSpecialCharacters) {
     addSpecialCharacters();
 }
 
-console.log(password);
+
 
 
 /*
 
 This next code should remove all numeric characters if the user selected no for including numeric characters.
-After clearing out the password, it will then use a for loop to generate a string of alphabetic characters based on the requested
+After clearing out the generatedPassword, it will then use a for loop to generate a string of alphabetic characters based on the requested
 length. And then, depending on what the user said for upper and lower case characters, it will add them accordingly with some
 conditionals.
 
@@ -134,23 +134,23 @@ conditionals.
 
 
 function removeNumbers() {
-  return password = password.replace(password,"");
+  return generatedPassword = generatedPassword.replace(generatedPassword,"");
 }
 
 function replaceWithALetter() {
-  return password = alphabeticCharacters.charAt(Math.floor(Math.random() * 26))
+  return generatedPassword = alphabeticCharacters.charAt(Math.floor(Math.random() * 26))
 }
 
 function addMoreLetters() {
-  return password = password + alphabeticCharacters.charAt(Math.floor(Math.random() * 26));
+  return generatedPassword = generatedPassword + alphabeticCharacters.charAt(Math.floor(Math.random() * 26));
 }
 
 function replaceWithASpecialCharacter() {
-  return password = specialCharacters.charAt(Math.floor(Math.random() * 15))
+  return generatedPassword = specialCharacters.charAt(Math.floor(Math.random() * 15))
 }
 
 function addMoreSpecialCharacters() {
-  return password = password + specialCharacters.charAt(Math.floor(Math.random() * 15));
+  return generatedPassword = generatedPassword + specialCharacters.charAt(Math.floor(Math.random() * 15));
 }
 
 
@@ -176,7 +176,7 @@ if (requestedNumbers === false && requestedUppercase === true && requestedLowerc
   for (i = 0; i < (requestedLength - 1); i++) {
     addMoreLetters();
   }
-    password.toUpperCase();
+    generatedPassword.toUpperCase();
   }
 
   if (requestedNumbers === false && requestedUppercase === false && requestedLowercase === true && requestedSpecialCharacters === true) {
@@ -223,17 +223,17 @@ replaceWithALetter();
 for (i = 0; i < (requestedLength - 1); i++) {
   addMoreLetters();
 }
-password.toUpperCase();
+generatedPassword.toUpperCase();
 for (i = 0; i < (requestedLength / 6); i++) {
   addSpecialCharacters();
 }
 }
 
 
+console.log(generatedPassword);
 
-console.log(password);
 
-}
+});
 
 
 
@@ -263,7 +263,7 @@ console.log(password);
 //Assignment Code
 
 // Steps
-// 1. When user accesses the page and clicks generate password the first prompt appears
+// 1. When user accesses the page and clicks generate generatedPassword the first prompt appears
 // 2. First confirmation - do you want to specify the length?
 // 3. If yes, display prompt - choose a length (must be between 8 and 128 characters) - NOTE: alert should be returned if a value outside of that is entered and they must re-enter the answer to the prompt.
 // 3.5 Store the reponse
@@ -271,13 +271,13 @@ console.log(password);
 // 5. Second confirmation - do you want to specify the types of characters?
 // 6. If yes, display prompt - please select all that apply: lower, upper, numeric, and/or special (is it possible to do check list of some kind with JS?)
 // 6.5 Store the response
-// 7. If no, skip the prompt and move on to the password generation
-// 8. Using the stored responses, generate the password
-// 9. Write the password in the box
-// 10. When user clicks generate password, the process restarts=
+// 7. If no, skip the prompt and move on to the generatedPassword generation
+// 8. Using the stored responses, generate the generatedPassword
+// 9. Write the generatedPassword in the box
+// 10. When user clicks generate generatedPassword, the process restarts=
 */
 
-// Write password to the #password input
+// Write generatedPassword to the #generatedPassword input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -288,4 +288,8 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-  passwordText.textContent = passwordText;
+
+  
+
+
+
